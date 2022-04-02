@@ -11,6 +11,7 @@ import '../assets/stylesheets/application.scss';
 
 import carsReducer from './reducers/carsReducer';
 
+import Garage from './containers/Garage';
 import CarsIndex from './containers/CarsIndex';
 
 const garageName = prompt("What is your garage?") || `garage${Math.floor(10 + (Math.random() * 90))}`;
@@ -36,9 +37,14 @@ const middlewares = applyMiddleware(reduxPromise, logger);
 ReactDOM.render(
   <Provider store={createStore(reducers, initialState, middlewares)}>
     <Router history={history}>
-      <Switch>
-        <Route path="/" exact component={CarsIndex} />
-      </Switch>
+      <div className="app">
+        <Garage />
+        <div className="cars-wrapper">
+          <Switch>
+            <Route path="/" exact component={CarsIndex} />
+          </Switch>
+        </div>
+      </div>
     </Router>
   </Provider>,
   document.getElementById('root')

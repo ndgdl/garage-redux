@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import Garage from './Garage';
 
 import { fetchCars } from '../actions';
 
 class CarsIndex extends Component {
   componentWillMount() {
-    this.props.fetchCars();
+    this.props.fetchCars(this.props.garage);
   }
 
-  createCars() {
+  render() {
     return this.props.cars.map((car) => {
       return (
         <div className="card-product" key={car.id}>
@@ -23,21 +22,11 @@ class CarsIndex extends Component {
       );
     });
   }
-
-  render() {
-    return (
-      <div className="app">
-        <Garage />
-        <div className="cars-wrapper">
-          {this.createCars()}
-        </div>
-      </div>
-    );
-  }
 }
 
 function mapStateToProps(state) {
   return {
+    garage: state.garage,
     cars: state.cars
   };
 }
