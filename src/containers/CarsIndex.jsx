@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Garage from './Garage';
 
+import { fetchCars } from '../actions';
+
 class CarsIndex extends Component {
+  componentWillMount() {
+    this.props.fetchCars();
+  }
+
   createCars() {
     return this.props.cars.map((car) => {
       return (
@@ -35,4 +42,11 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(CarsIndex);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(
+    { fetchCars },
+    dispatch
+  );
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CarsIndex);
