@@ -10,6 +10,10 @@ class CarsIndex extends Component {
   }
 
   render() {
+    // if (!this.props.cars) {
+    //   return "Loading...";
+    // }
+
     return this.props.cars.map((car) => {
       return (
         <div className="card-product" key={car.id}>

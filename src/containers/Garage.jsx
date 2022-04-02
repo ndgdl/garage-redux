@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Garage extends Component {
   render() {
@@ -18,7 +19,10 @@ class Garage extends Component {
             <h1>Garage Gaudin</h1>
             <p>Our garage is the best. Reasonnable prices, always on time, we are the best (and fictionnal).</p>
           </div>
-          <button>Add a car</button>
+
+          <Link to='/cars/new'>
+            <button>Add a car</button>
+          </Link>
         </div>
       </div>
     );
