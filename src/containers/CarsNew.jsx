@@ -6,7 +6,7 @@ import { createCar } from '../actions';
 
 class CarsNew extends Component {
   onSubmit = (values) => {
-    const garage = this.props.match.params.garage;
+    const { garage } = this.props;
     this.props.createCar(garage, values, (post) => {
       this.props.history.push('/');
       return post;
@@ -71,6 +71,12 @@ class CarsNew extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    garage: state.garage
+  };
+}
+
 export default reduxForm({ form: 'newCarForm' })(
-  connect(null, { createCar })(CarsNew)
+  connect(mapStateToProps, { createCar })(CarsNew)
 );
