@@ -12,20 +12,20 @@ import '../assets/stylesheets/application.scss';
 
 import carsReducer from './reducers/carsReducer';
 
-import Garage from './containers/Garage';
-import CarsIndex from './containers/CarsIndex';
-import CarsNew from './containers/CarsNew';
-import CarsShow from './containers/CarsShow';
+import Garage from './containers/garage';
+import CarsIndex from './containers/cars_index';
+import CarsNew from './containers/cars_new';
+import CarsShow from './containers/cars_show';
 
 
-const garageName = "undefined"; //prompt("What is your garage?") || `garage${Math.floor(10 + (Math.random() * 90))}`;
+const garageName = prompt("What is your garage?") || `garage${Math.floor(10 + (Math.random() * 90))}`;
 const initialState = {
   garage: garageName,
   cars: []
 };
 
 const reducers = combineReducers({
-  garage: (state = null, action) => state,
+  garage: garageName,
   cars: carsReducer,
   form: formReducer
 });

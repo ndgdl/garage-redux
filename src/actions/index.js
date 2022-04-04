@@ -1,4 +1,4 @@
-// TODO: add and export your own actions
+const BASE_URL = 'https://wagon-garage-api.herokuapp.com';
 
 export const FETCH_CARS = 'FETCH_CARS';
 export const FETCH_CAR = 'FETCH_CAR';
@@ -6,7 +6,7 @@ export const CAR_CREATED = 'CAR_CREATED';
 export const CAR_DELETED = 'CAR_DELETED';
 
 export function fetchCars(garage) {
-  const promise = fetch(`https://wagon-garage-api.herokuapp.com/${garage}/cars`)
+  const promise = fetch(`${BASE_URL}/${garage}/cars`)
     .then(res => res.json());
 
   return {
@@ -16,7 +16,7 @@ export function fetchCars(garage) {
 }
 
 export function createCar(garage, body, callback) {
-  const request = fetch(`https://wagon-garage-api.herokuapp.com/${garage}/cars`, {
+  const request = fetch(`${BASE_URL}/${garage}/cars`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body)
@@ -29,7 +29,7 @@ export function createCar(garage, body, callback) {
 }
 
 export function fetchCar(id) {
-  const promise = fetch(`https://wagon-garage-api.herokuapp.com/cars/${id}`)
+  const promise = fetch(`${BASE_URL}/cars/${id}`)
     .then(res => res.json());
 
   return {
@@ -38,11 +38,11 @@ export function fetchCar(id) {
   };
 }
 
-export function deleteCar(id, callback) {
-  const request = fetch(`https://wagon-garage-api.herokuapp.com/cars/${id}`, {
-    method: 'DELETE'})
+export function deleteCar(history, car) {
+  const request = fetch(`${BASE_URL}/cars/${car.id}`, {
+    method: 'DELETE' })
     .then(res => res.json)
-    .then(callback);
+    .then(() => history.push(""));
   return {
     type: CAR_DELETED,
     payload: request

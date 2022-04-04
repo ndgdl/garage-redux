@@ -13,7 +13,7 @@ class CarsShow extends Component {
   }
 
   handleClick = () => {
-    this.props.deleteCar(this.props.match.params.id, () => this.props.history.push("/"));
+    this.props.deleteCar(this.props.history, this.props.car);
   }
 
   render() {
