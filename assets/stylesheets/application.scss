@@ -243,3 +243,19 @@ body {
     padding: 16px;
   }
 }
+
+.form-bg {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  form {
+    background-color: white;
+    width: 80%;
+    padding: 25px;
+    .form-group, button {
+      margin-top: 10px;
+    }
+  }
+}
