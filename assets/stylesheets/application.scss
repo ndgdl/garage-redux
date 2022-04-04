@@ -217,6 +217,7 @@ body {
     display: flex;
     align-items: center;
     margin: 10px;
+    position: relative;
   }
 
   .card-product img {
@@ -241,6 +242,15 @@ body {
 
   .card-product .card-product-infos {
     padding: 16px;
+  }
+
+  .card-product-details {
+    margin: 10px 0 0 0;
+    font-size: 25px;
+    text-align: center;
+    color: black;
+    padding: 5px;
+    border: 2px solid black;
   }
 }
 

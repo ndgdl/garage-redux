@@ -18,7 +18,7 @@ import CarsNew from './containers/CarsNew';
 import CarsShow from './containers/CarsShow';
 
 
-const garageName = prompt("What is your garage?") || `garage${Math.floor(10 + (Math.random() * 90))}`;
+const garageName = "undefined"; //prompt("What is your garage?") || `garage${Math.floor(10 + (Math.random() * 90))}`;
 const initialState = {
   garage: garageName,
   cars: []
