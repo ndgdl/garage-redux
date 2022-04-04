@@ -3,13 +3,17 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { BsFillTrashFill } from 'react-icons/bs';
 
-import { fetchCar } from '../actions';
+import { fetchCar, deleteCar } from '../actions';
 
 class CarsShow extends Component {
   componentWillMount() {
     if (!this.props.car) {
       this.props.fetchCar(this.props.match.params.id);
     }
+  }
+
+  handleClick = () => {
+    this.props.deleteCar(this.props.match.params.id, () => this.props.history.push("/"));
   }
 
   render() {
@@ -26,7 +30,11 @@ class CarsShow extends Component {
           <p>{`OWNER: ${car.owner}`}</p>
           <p className="card-product-detail">{car.plate}</p>
         </div>
-        <button><BsFillTrashFill /></button>
+        <button
+          onClick={this.handleClick}
+        >
+          <BsFillTrashFill />
+        </button>
       </div>
     );
   }
@@ -40,7 +48,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
-    { fetchCar },
+    { fetchCar, deleteCar },
     dispatch);
 }
 

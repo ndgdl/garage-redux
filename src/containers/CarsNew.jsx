@@ -7,9 +7,9 @@ import { createCar } from '../actions';
 class CarsNew extends Component {
   onSubmit = (values) => {
     const { garage } = this.props;
-    this.props.createCar(garage, values, (post) => {
+    this.props.createCar(garage, values, (car) => {
       this.props.history.push('/');
-      return post;
+      return car;
     });
   }
 

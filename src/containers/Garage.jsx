@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, useRouteMatch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class Garage extends Component {
   renderButton = () => {
@@ -19,7 +19,6 @@ class Garage extends Component {
   }
 
   render() {
-
     return (
       <div className="garage-wrapper">
         <div
