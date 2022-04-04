@@ -13,15 +13,31 @@ class CarsNew extends Component {
     });
   }
 
+  required = (value) => {
+    return value ? undefined : 'Required';
+  }
+
+  requiredCaps = (value) => {
+    return value && value === value.toUpperCase() ? undefined : 'Only caps!';
+  }
+
+  requiredNoSpeChar = (value) => {
+    return value && !/[^\w-]/.test(value) ? undefined : 'No special characters';
+  }
+
   renderField = (field) => {
+    const { touched, error, warning } = field.meta;
     return (
       <div className="form-group">
         <label htmlFor={field.name}>{field.label}</label>
-        <input
-          className="form-control"
-          type={field.type}
-          {...field.input}
-        />
+        <div>
+          <input
+            className="form-control"
+            type={field.type}
+            {...field.input}
+          />
+          {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>)) }
+        </div>
       </div>
     );
   }
@@ -39,24 +55,28 @@ class CarsNew extends Component {
             name="brand"
             type="text"
             component={this.renderField}
+            validate={[this.required]}
           />
           <Field
             label="Model"
             name="model"
             type="text"
             component={this.renderField}
+            validate={[this.required]}
           />
           <Field
             label="Owner"
             name="owner"
             type="text"
             component={this.renderField}
+            validate={[this.required]}
           />
           <Field
             label="Plate"
             name="plate"
             type="text"
             component={this.renderField}
+            validate={[this.required, this.requiredCaps, this.requiredNoSpeChar]}
           />
           <button
             className="btn btn-primary"
