@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { BsFillTrashFill } from 'react-icons/bs';
 
 import { fetchCar } from '../actions';
 
@@ -25,6 +26,7 @@ class CarsShow extends Component {
           <p>{`OWNER: ${car.owner}`}</p>
           <p className="card-product-detail">{car.plate}</p>
         </div>
+        <button><BsFillTrashFill /></button>
       </div>
     );
   }

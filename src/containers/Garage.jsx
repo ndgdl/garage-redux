@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
 
 class Garage extends Component {
-  renderButton() {
+  renderButton = () => {
     const pathname = window.location.pathname;
     if (pathname === '/') {
       return (
